@@ -1,0 +1,50 @@
+#include <cctype>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+using namespace std;
+
+double solution(vector< double > numbers) {
+    // Type your solution here
+    double tmp=0;
+    for(int i=0; i<numbers.size();i++)
+    {
+        if(numbers.at(i)>tmp)
+            tmp=numbers[i];
+    }
+    return tmp;
+}
+string solution2(vector< long > arr) {
+    // Type your solution here
+    string r="Right";
+    string l="Left";
+    int Lcnt=0;
+    int Rcnt=0;
+    for(int i=1; i<arr.size();i++)
+    {
+        if(i%2>0&&arr.at(i)!=-1)
+        {
+            Lcnt++;
+        }
+        if(i%2<=0&&arr.at(i)!=-1)
+        {
+            Rcnt++;
+        }
+    }
+    if(Lcnt>Rcnt)
+        return l;
+    if(Lcnt<Rcnt)
+        return r;
+    else
+        return "";
+}
+int main()
+{
+    vector<double> vect{1,2,4};
+    vector<long> vect2{3,6,2,9,-1,10};
+    cout<<solution(vect)<<endl;
+    cout<<solution2(vect2)<<endl;
+    return 0;
+}
